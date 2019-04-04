@@ -14,10 +14,10 @@ class App extends Component {
         <header>
           <NavLink exact to="/">
             {" "}
-            SIGN IN{" "}
+            | SIGN IN{" "}
           </NavLink>
-          <NavLink to="/signup"> SIGN UP </NavLink>
-          <NavLink to="/users"> USERS </NavLink>
+          <NavLink to="/signup">| SIGN UP |</NavLink>
+          <NavLink to="/users"> USERS |</NavLink>
         </header>
         <>
           <Route path="/" component={Login} />
