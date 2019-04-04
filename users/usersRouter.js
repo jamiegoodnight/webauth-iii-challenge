@@ -7,7 +7,8 @@ const db = require("./usersModel");
 const router = express.Router();
 
 router.get("/", restricted, (req, res) => {
-  db.getAllUsers()
+  const departments = req.decodedJwt.roles;
+  db.getAllUsersByDepartment(departments)
     .then(users => {
       res.status(200).json(users);
     })
@@ -20,10 +21,10 @@ router.get("/", restricted, (req, res) => {
 
 function restricted(req, res, next) {
   const token = req.headers.authorization;
-
   if (token) {
-    jwt.verify(token, secrets.jwtSecrets, err => {
+    jwt.verify(token, secrets.jwtSecrets, (err, decodedToken) => {
       if (!err) {
+        req.decodedJwt = decodedToken;
         next();
       } else {
         res.status(401).json({ message: "Invalid token!" });

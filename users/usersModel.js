@@ -1,9 +1,13 @@
 const db = require("../database/dbConfig");
 
 module.exports = {
-  getAllUsers
+  getAllUsersByDepartment
 };
 
-function getAllUsers() {
-  return db("users");
+function getAllUsersByDepartment(department) {
+  return db("users").where({ department });
 }
+
+// function getAllUsers() {
+//     return db("users");
+//   }
