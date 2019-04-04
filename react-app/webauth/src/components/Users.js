@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import { Redirect } from "react-router";
 
 import axiosWithAuth from "./axiosWithAuth";
 
@@ -11,6 +11,7 @@ class Users extends React.Component {
   render() {
     return (
       <>
+        <button onClick={this.handleClick}>LOGOUT</button>
         <h2>List of Users</h2>
         <>
           {this.state.users.map(users => (
@@ -27,11 +28,17 @@ class Users extends React.Component {
     axiosWithAuth()
       .get("http://localhost:5000/api/users")
       .then(res => {
-        this.setState({ users: res.data });
+        this.setState({
+          users: res.data
+        });
       })
       .catch(error => {
         console.error("USERS ERROR", error);
       });
+  };
+
+  handleClick = e => {
+    localStorage.removeItem("token");
   };
 }
 

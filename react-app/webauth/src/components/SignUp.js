@@ -53,7 +53,7 @@ class SignUp extends React.Component {
           password: "",
           department: ""
         });
-        this.history.push("/");
+        this.props.history.push("/");
       })
       .catch(err => {
         console.log(err);
