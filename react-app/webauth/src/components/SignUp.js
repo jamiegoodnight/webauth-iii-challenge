@@ -48,6 +48,11 @@ class SignUp extends React.Component {
       .post("http://localhost:5000/api/auth/register", this.state)
       .then(res => {
         console.log(res);
+        this.setState({
+          username: "",
+          password: "",
+          department: ""
+        });
         this.history.push("/");
       })
       .catch(err => {

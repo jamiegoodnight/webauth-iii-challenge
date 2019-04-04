@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 
+import axiosWithAuth from "./axiosWithAuth";
+
 class Users extends React.Component {
   state = {
     users: []
@@ -22,7 +24,7 @@ class Users extends React.Component {
   }
 
   componentDidMount = () => {
-    axios
+    axiosWithAuth()
       .get("http://localhost:5000/api/users")
       .then(res => {
         this.setState({ users: res.data });

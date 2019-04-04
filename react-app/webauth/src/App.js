@@ -20,7 +20,7 @@ class App extends Component {
           <NavLink to="/users"> USERS |</NavLink>
         </header>
         <>
-          <Route path="/" component={Login} />
+          <Route exact path="/" component={Login} />
           <Route path="/signup" component={SignUp} />
           <Route path="/users" component={Users} />
         </>
